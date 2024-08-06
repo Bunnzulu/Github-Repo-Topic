@@ -1,4 +1,5 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
+from TopicAdder import Get_Repos,Auto_Topic
 
 
 app = Flask(__name__,template_folder="Templates")
@@ -6,7 +7,13 @@ app = Flask(__name__,template_folder="Templates")
 
 @app.route("/")
 def index():
-    pass
+    return render_template("index.html")
+
+@app.route("/Repos",methods=["post"])
+def API():
+    Data = Get_Repos(request.form.get("Key"))
+    
+    return render_template("SeeRepos.html",Repos=Data)
 
 
 
