@@ -1,5 +1,4 @@
-from github import Github
-from github import Auth
+from github import Github,Auth
 
 Repo = "" # Which repo do you want to add Topics to
 Topics = ["html","python"] #What do you want to add

@@ -12,8 +12,12 @@ def index():
 @app.route("/Repos",methods=["post"])
 def API():
     Data = Get_Repos(request.form.get("Key"))
-    
-    return render_template("SeeRepos.html",Repos=Data)
+    if Data == None: return "Not Found", 404
+    else:return render_template("SeeRepos.html",Repos=Data,Account=request.form.get("Key"))
+
+@app.route("/ManualTopics",methods=["post"])
+def InputTopics():
+   pass
 
 
 
