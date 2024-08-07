@@ -29,10 +29,11 @@ def Manual_Topic(data,key):
     g = Github(auth=auth)
     Dict_keys = [i for i in data.keys()]
     for repo in g.get_user().get_repos():
-        if repo.name in Dict_keys:    
+        if repo.name in Dict_keys: 
             topics = data.get(repo.name)
             topics = topics.split(",")
-            topics = [t.lower() for t in topics]
-            repo.replace_topics(topics)
+            if type(topics) == list:
+                topics = [t.lower().replace(" ","-") for t in topics]
+                repo.replace_topics(topics)
     g.close()
         

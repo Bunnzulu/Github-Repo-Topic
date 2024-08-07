@@ -12,7 +12,7 @@ def index():
 @app.route("/Repos",methods=["post"])
 def API():
     Data = Get_Repos(request.form.get("Key"))
-    if Data == None: return "Not Found", 404
+    if Data == None: return "Not Found",404
     else:return render_template("SeeRepos.html",Repos=Data,Account=request.form.get("Key"))
 
 @app.route("/Auto/true",methods=["post"])
@@ -24,7 +24,7 @@ def AutoTopics():
 def InputTopics():
     data = [i for i in request.form.keys()]
     data.pop()
-    return render_template("InputTopics.html",Repos=data,Account=request.form.get("Key"))
+    return render_template("InputTopics.html",Repos=data,Account=request.form.get("KeyAPI"))
 
 @app.route("/Manual",methods=["post"])
 def ManualTopics():
