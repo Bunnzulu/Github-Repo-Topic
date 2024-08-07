@@ -1,8 +1,5 @@
 from github import Github,Auth
 
-Repo = "" # Which repo do you want to add Topics to
-Topics = ["html","python"] #What do you want to add
-
 def Get_Repos(key):
     try:
         auth = Auth.Token(key)
