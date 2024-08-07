@@ -15,15 +15,14 @@ def Get_Repos(key):
     except:
         return None
 
-def Auto_Topic(key,repos):
+def Auto_Topic(key):
     auth = Auth.Token(key)
     g = Github(auth=auth)
     for repo in g.get_user().get_repos():
         topics = []
-        if repo.name in repos:
-            for lan in repo.get_languages().keys():
-                topics.append(lan.lower())
-            repo.replace_topics(topics)
+        for lan in repo.get_languages().keys():
+            topics.append(lan.lower())
+        repo.replace_topics(topics)
     g.close()
     
 def Manual_Topic():

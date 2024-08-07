@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request
-from TopicAdder import Get_Repos,Auto_Topic
+from TopicAdder import Get_Repos,Auto_Topic,Manual_Topic
 
 
 app = Flask(__name__,template_folder="Templates")
@@ -15,11 +15,15 @@ def API():
     if Data == None: return "Not Found", 404
     else:return render_template("SeeRepos.html",Repos=Data,Account=request.form.get("Key"))
 
-@app.route("/ManualTopics",methods=["post"])
-def InputTopics():
-   pass
+@app.route("/Auto/true",methods=["post"])
+def AutoTopics():
+   Auto_Topic(request.form.get("Key"))
+   return render_template("AutoPage.html")
 
-
+@app.route("/Auto?false",methods=["post"])
+def ManualTopics():
+    Manual_Topic()
+    return "Hello World"
 
 
 
