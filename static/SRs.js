@@ -3,7 +3,7 @@ document.getElementById("TopicForm").onsubmit = function(){
     const Manual = document.getElementById("Manual").checked
     const checks = Get_Check_Stats()
     if ((Auto) || (Manual && checks > 0)){
-        // document.getElementById("TopicForm").action = `/Auto?${Auto}`
+        document.getElementById("TopicForm").action = `/Auto/${Auto}`
         return true
     } else {
         return false

@@ -20,12 +20,17 @@ def AutoTopics():
    Auto_Topic(request.form.get("Key"))
    return render_template("AutoPage.html")
 
-@app.route("/Auto?false",methods=["post"])
+@app.route("/Auto/false",methods=["post"])
+def InputTopics():
+    data = [i for i in request.form.keys()]
+    data.pop()
+    return render_template("InputTopics.html",Repos=data,Account=request.form.get("Key"))
+
+@app.route("/Manual",methods=["post"])
 def ManualTopics():
-    Manual_Topic()
-    return "Hello World"
-
-
+    data = [i for i in request.form.keys()]
+    data.pop()
+    return "Almost there"
 
 if __name__ == "__main__":
     app.run(debug=True)
