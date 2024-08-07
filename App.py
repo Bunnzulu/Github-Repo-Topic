@@ -28,9 +28,9 @@ def InputTopics():
 
 @app.route("/Manual",methods=["post"])
 def ManualTopics():
-    data = [i for i in request.form.keys()]
-    data.pop()
-    return "Almost there"
+    data = request.form
+    Manual_Topic(data,data.get("KeyAPI"))
+    return render_template("AutoPage.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

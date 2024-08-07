@@ -24,6 +24,15 @@ def Auto_Topic(key):
         repo.replace_topics(topics)
     g.close()
     
-def Manual_Topic():
-    pass # TODO
+def Manual_Topic(data,key):
+    auth = Auth.Token(key)
+    g = Github(auth=auth)
+    Dict_keys = [i for i in data.keys()]
+    for repo in g.get_user().get_repos():
+        if repo.name in Dict_keys:    
+            topics = data.get(repo.name)
+            topics = topics.split(",")
+            topics = [t.lower() for t in topics]
+            repo.replace_topics(topics)
+    g.close()
         
