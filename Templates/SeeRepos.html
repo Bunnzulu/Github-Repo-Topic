@@ -19,6 +19,7 @@
                 <label for={{repo}}>{{repo}}:</label>
                 <input type="checkbox" name={{repo}}><br>
             {% endfor %}
+            <input type="text" name="Key" value="{{Account}}" hidden>
             <input type="submit">
         </form>
         <script type="text/javascript"src="{{ url_for('static', filename='SRs.js') }}"></script>
