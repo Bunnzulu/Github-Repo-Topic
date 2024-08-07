@@ -10,16 +10,17 @@
 <body>
     <div class="position-absolute top-0 start-50 translate-middle-x">
         <h1>Pick Which Repos to Update</h1>
-        <form action="" method="post">
+        <form action="/" method="post" id="TopicForm">
             <label>Manual Label:</label>
-            <input type="checkbox" id="Manual"><br>
+            <input type="checkbox" id="Manual" checked><br>
             <label>Auto Label:</label>
             <input type="checkbox" id="Auto"><br>
             {% for repo in Repos%}
                 <label for={{repo}}>{{repo}}:</label>
                 <input type="checkbox" name={{repo}}><br>
             {% endfor %}
-            <input type="submit" value="Go">
+            <input type="submit">
         </form>
+        <script type="text/javascript"src="{{ url_for('static', filename='SRs.js') }}"></script>
 </body>
 </html>
